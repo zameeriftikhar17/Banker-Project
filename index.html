@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Banker Template Clone with Dropdown</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+</head>
+<body>
+     
+                                             <!-- Header -->
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <header id="header" style="position:fixed;top:0;left:0;width:100%;z-index:999;
+background:rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,255,255,0.3);
+padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;box-sizing:border-box;">
+
+        <!-- Logo -->
+        <div style="flex:0 0 auto;">
+            <h1 style="margin:0;font-size:24px;font-weight:bold;white-space:nowrap;">
+                <a href="index.html" style="color:#fff;text-decoration:none;">Banker<span style="color:orange;">.</span></a>
+            </h1>
+        </div>
+
+        <!-- Hamburger -->
+        <div id="menuToggle" onclick="toggleMenu()" style="display:none;cursor:pointer;color:white;font-size:24px;">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- Nav + Social -->
+        <div id="navContainer" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+
+            <!-- Menu -->
+            <nav style="width:auto;">
+                <ul id="menuList" style="list-style:none;margin:0;padding:0;display:flex;gap:20px;align-items:center;font-size:14px;flex-wrap:wrap;">
+
+                    <li><a href="#home" style="color:#fff;text-decoration:none;">Home</a></li>
+
+                    <!-- About Dropdown -->
+                    <li class="dropdown" style="position:relative;">
+                        <a href="#about-us" style="color:#fff;text-decoration:none;">About Us ▼</a>
+                        <ul class="dropdown-menu" style="display:none;position:absolute;top:30px;left:0;background:#fff;list-style:none;margin:0;padding:8px 0;
+                        box-shadow:0 2px 8px inherit;border:1px solid #eee;min-width:180px;">
+                            <li><a href="#team" style="display:block;padding:8px 15px;color:#333;text-decoration:none;">Team</a></li>
+                            <li><a href="#pricing" style="display:block;padding:8px 15px;color:#333;text-decoration:none;">Pricing</a></li>
+                            <li><a href="#faq" style="display:block;padding:8px 15px;color:#333;text-decoration:none;">FAQ</a></li>
+                            <li><a href="#gallery" style="display:block;padding:8px 15px;color:#333;text-decoration:none;">Gallery</a></li>
+                            <li><a href="#services" style="display:block;padding:8px 15px;color:#333;text-decoration:none;">Services</a></li>
+                            <li><a href="#testimonials" style="display:block;padding:8px 15px;color:#333;text-decoration:none;">Testimonials</a></li>
+                            <li class="dropdown" style="position:relative;">
+                                <a href="#" style="display:block;padding:8px 15px;color:#333;text-decoration:none;">More Links ▶</a>
+                                <ul class="dropdown-menu" style="display:none;position:absolute;top:0;left:100%;background:#fff;list-style:none;margin:0;padding:8px 0;
+                                border:1px solid #eee;box-shadow:0 2px 8px inherit;min-width:180px;">
+                                    <li><a href="#" style="display:block;padding:8px 15px;color:#333;text-decoration:none;">Menu One</a></li>
+                                    <li><a href="#" style="display:block;padding:8px 15px;color:#333;text-decoration:none;">Menu Two</a></li>
+                                    <li><a href="#" style="display:block;padding:8px 15px;color:#333;text-decoration:none;">Menu Three</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#blog" style="color:#fff;text-decoration:none;">Blog</a></li>
+                    <li><a href="#contact" style="color:#fff;text-decoration:none;">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Social Links -->
+            <div style="display:flex;gap:10px;flex:0 0 auto;">
+                <a href="#" style="color:#fff;font-size:0.9rem;text-decoration:none;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" style="color:#fff;font-size:0.9rem;text-decoration:none;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color:#fff;font-size:0.9rem;text-decoration:none;"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <script>
+               function toggleMenu() {
+            const nav = document.getElementById('navContainer');
+            const links = nav.getElementsByTagName('a'); // grab all menu links
+
+            if (nav.style.display === 'none' || nav.style.display === '') {
+                nav.style.display = 'flex';
+                nav.style.flexDirection = 'column';
+                nav.style.width = '100%';
+                nav.style.background = '#ffffff';  // White background
+                nav.style.padding = '15px 0';
+
+                // Change all link text to black
+                for (let i = 0; i < links.length; i++) {
+                    links[i].style.color = '#000000';
+                }
+            } else {
+                nav.style.display = 'none';
+            }
+        }
+
+        function responsiveHeader() {
+            const toggle = document.getElementById('menuToggle');
+            const nav = document.getElementById('navContainer');
+            const menuList = document.getElementById('menuList');
+
+            if (window.innerWidth <= 900) {
+                toggle.style.display = 'block';
+                nav.style.display = 'none';
+                menuList.style.flexDirection = 'column';
+                menuList.style.gap = '10px';
+            } else {
+                toggle.style.display = 'none';
+                nav.style.display = 'flex';
+                nav.style.flexDirection = 'row';
+                nav.style.background = 'transparent';
+                menuList.style.flexDirection = 'row';
+                menuList.style.gap = '20px';
+            }
+        }
+        window.addEventListener('resize', responsiveHeader);
+        window.addEventListener('load', responsiveHeader);
+
+        // Dropdown logic
+        document.querySelectorAll('.dropdown').forEach(drop => {
+            const link = drop.querySelector('a');
+            const menu = drop.querySelector('.dropdown-menu');
+
+            // Desktop hover
+            drop.addEventListener('mouseenter', () => {
+                if (window.innerWidth > 900) menu.style.display = 'block';
+            });
+            drop.addEventListener('mouseleave', () => {
+                if (window.innerWidth > 900) menu.style.display = 'none';
+            });
+
+            // Mobile click toggle
+            link.addEventListener('click', e => {
+                if (window.innerWidth <= 900) {
+                    e.preventDefault();
+                    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        });
+    </script>
+
+
+
+
+                                              <!-- Hero Section -->
+    <div id="home" style="position:relative;height:100vh;overflow:hidden;">
+        <!-- Fixed Background -->
+        <div style="position:absolute;top:0;left:0;width:100%;height:100%;
+        background-image:url('slide_3.jpg.webp');
+        background-size:cover;background-position:center;">
+        </div>
+
+        <!-- Overlay -->
+        <div style="position:absolute;top:0;left:0;width:100%;height:100%;
+        background:rgba(0,0,0,0.4);display:flex;flex-direction:column;
+        align-items:center;justify-content:center;color:#fff;text-align:center;padding:20px;">
+            <h1 id="heading" style="font-size:3rem;margin-bottom:15px;">Banking Solutions</h1>
+            <p id="desc" style="font-size:1.2rem;max-width:700px;">
+                Modern banking services for individuals and businesses.
+            </p>
+        </div>
+
+        <!-- Dots -->
+        <div id="dots" style="position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+        display:flex;gap:10px;">
+            <span class="dot" data-index="0" style="width:12px;height:12px;border-radius:50%;
+            background:#fff;opacity:0.6;cursor:pointer;"></span>
+            <span class="dot" data-index="1" style="width:12px;height:12px;border-radius:50%;
+            background:#fff;opacity:0.6;cursor:pointer;"></span>
+            <span class="dot" data-index="2" style="width:12px;height:12px;border-radius:50%;
+            background:#fff;opacity:0.6;cursor:pointer;"></span>
+        </div>
+    </div>
+
+    <script>
+        const slides = [
+            { heading: "Banking Solutions", desc: "Modern banking services for individuals and businesses." },
+            { heading: "Financing Solutions", desc: "Flexible financing options tailored to your needs." },
+            { heading: "Savings Accounts", desc: "Secure your future with our high-interest savings accounts." }
+        ];
+
+        let current = 0;
+        const heading = document.getElementById('heading');
+        const desc = document.getElementById('desc');
+        const dots = document.querySelectorAll('.dot');
+        let autoPlay;
+
+        function updateSlide(index) {
+            current = index;
+            heading.textContent = slides[current].heading;
+            desc.textContent = slides[current].desc;
+            dots.forEach((dot, i) => dot.style.opacity = i === current ? "1" : "0.6");
+        }
+
+        function nextSlide() {
+            current = (current + 1) % slides.length;
+            updateSlide(current);
+        }
+
+        function startAutoPlay() {
+            autoPlay = setInterval(nextSlide, 5000);
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                clearInterval(autoPlay);
+                updateSlide(parseInt(dot.dataset.index));
+                startAutoPlay();
+            });
+        });
+
+        updateSlide(current);
+        startAutoPlay();
+    </script>
+
+                                              <!-- Next Section -->
+    <div class="site-section" id="next" style="padding:60px 0;">
+        <div class="container">
+
+            <!-- Feature Cards -->
+            <div class="row mb-5">
+                <div class="col-md-4 text-center" data-aos="fade-up">
+                    <img src="001-wallet.svg"
+                         alt="Money Savings"
+                         class="img-fluid mb-4"
+                         style="width:80px;height:auto;">
+                    <h3 class="card-title">Money Savings</h3>
+                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                </div>
+
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <img src="004-cart.svg"
+                         alt="Online Shopping"
+                         class="img-fluid mb-4"
+                         style="width:80px;height:auto;">
+                    <h3 class="card-title">Online Shopping</h3>
+                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                </div>
+
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <img src="006-credit-card.svg"
+                         alt="Credit/Debit Cards"
+                         class="img-fluid mb-4"
+                         style="width:80px;height:auto;">
+                    <h3 class="card-title">Credit / Debit Cards</h3>
+                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                </div>
+            </div>
+
+            <!-- Image + Form Section -->
+            <div class="row align-items-center">
+                <!-- Image -->
+                <div class="col-lg-6 mb-5" data-aos="fade-up">
+                    <figure class="circle-bg" style="max-width:100%;overflow:hidden;border-radius:12px;">
+                        <img src="img_1.jpg.webp"
+                             alt="About Our Banking"
+                             class="img-fluid"
+                             style="width:100%;height:auto;object-fit:cover;">
+                    </figure>
+                </div>
+
+                <!-- Content & Form -->
+                <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mb-4">
+                        <h3 class="h3 mb-4 text-black">Amortization Computation</h3>
+                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                    </div>
+
+                    <div class="mb-4">
+                        <ul class="list-unstyled ul-check success">
+                            <li>Officia quaerat eaque neque</li>
+                            <li>Lorem ipsum dolor sit amet</li>
+                            <li>Consectetur adipisicing elit</li>
+                        </ul>
+                    </div>
+
+                    <!-- Email Form -->
+                    <div class="mb-4">
+                        <form action="#" method="POST" class="d-flex flex-wrap">
+                            <input type="email"
+                                   class="form-control mr-2 mb-2"
+                                   placeholder="Enter your email"
+                                   style="flex:1;min-width:220px;">
+                            <button type="submit" class="btn btn-primary mb-2" style="background:#ff6600;border:none;">
+                                Submit Email
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+                                             <!-- About Us Section -->
+    <div id="about-us" class="site-section cta-big-image" style="position: relative; background: linear-gradient(135deg, #f5f7fa 0%, #e6ecf3 100%); padding: 80px 0; overflow: hidden;">
+
+        <!-- Decorative floating shapes -->
+        <div style="content: ''; position: absolute; border-radius: 50%; background: rgba(255, 102, 0, 0.05); width: 300px; height: 300px; top: -100px; left: -100px; z-index: 0;"></div>
+        <div style="content: ''; position: absolute; border-radius: 50%; background: rgba(255, 102, 0, 0.05); width: 200px; height: 200px; bottom: -80px; right: -80px; z-index: 0;"></div>
+
+        <div class="container" style="position: relative; z-index: 1; max-width: 1140px; margin: 0 auto; padding: 0 15px;">
+
+            <!-- Title -->
+            <div class="row mb-5 justify-content-center" style="display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 3rem;">
+                <div class="col-md-8 text-center" style="flex: 0 0 66.666%; max-width: 66.666%; text-align: center;">
+                    <h2 class="section-title mb-3" data-aos="fade-up" style="font-size: 2.5rem; font-weight: 700; color: #ff6600; position: relative; display: inline-block; padding-bottom: 10px;">
+                        About Us
+                        <span style="content: ''; position: absolute; bottom: 0; left: 50%; width: 60px; height: 3px; background: #ff6600; transform: translateX(-50%); display: block;"></span>
+                    </h2>
+                    <p class="lead" data-aos="fade-up" data-aos-delay="100" style="color: #555; line-height: 1.7; font-size: 1.25rem;">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus minima neque tempora reiciendis.
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- Content -->
+            <div class="row align-items-center" style="display: flex; flex-wrap: wrap; align-items: center;">
+
+                <!-- Image -->
+                <div class="col-lg-6 mb-5" data-aos="fade-up" style="flex: 0 0 50%; max-width: 50%; margin-bottom: 3rem;">
+                    <figure class="circle-bg" style="margin: 0;">
+                        <img src="hero_1.jpg.webp" alt="About Us" class="img-fluid rounded shadow"
+                             style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.4s ease;">
+                    </figure>
+                </div>
+
+                <!-- Text -->
+                <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100" style="flex: 0 0 41.666%; max-width: 41.666%; margin-left: auto;">
+                    <h3 style="color: #ff6600; font-weight: 600;">We Solve Your Financial Problem</h3>
+                    <p style="color: #555; line-height: 1.7;">
+                        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                        Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+                    </p>
+                    <p style="color: #555; line-height: 1.7;">
+                        A small river named Duden flows by their place and supplies it with the necessary regelialia.
+                        It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+                                               <!-- Team Section -->
+    <section id="team" style="padding:50px 0; max-width:1200px; margin:auto;">
+        <div style="text-align:center; margin-bottom:40px;">
+            <h2 style="font-size:32px; font-weight:bold; color:#ff6600;">Meet the Team</h2>
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+
+
+            <!-- Member 1 -->
+            <div style="flex:1 1 calc(25% - 20px); max-width:250px; text-align:center;">
+                <div style="position:relative; overflow:hidden; border-radius:10px; width:250px; height:250px;">
+                    <img src="person_5.jpg.webp" style="width:100%; height:100%; object-fit:cover; transition:0.3s;">
+                    <div style="position:absolute; left:0; top:0; height:100%; background:rgba(255,102,0,0.85); display:flex; flex-direction:column; justify-content:center; align-items:center; width:50px; transform:translateX(-100%); transition:0.3s;">
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <h5 style="margin-top:15px; font-weight:bold;">Kaiara Spencer</h5>
+                <p style="font-size:14px; color:gray;">Finance Manager</p>
+            </div>
+
+            <!-- Member 2 -->
+            <div style="flex:1 1 calc(25% - 20px); max-width:250px; text-align:center;">
+                <div style="position:relative; overflow:hidden; border-radius:10px; width:250px; height:250px;">
+                    <img src="person_6.jpg.webp" style="width:100%; height:100%; object-fit:cover; transition:0.3s;">
+                    <div style="position:absolute; left:0; top:0; height:100%; background:rgba(255,102,0,0.85); display:flex; flex-direction:column; justify-content:center; align-items:center; width:50px; transform:translateX(-100%); transition:0.3s;">
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <h5 style="margin-top:15px; font-weight:bold;">Dave Simpson</h5>
+                <p style="font-size:14px; color:gray;">Marketing Manager</p>
+            </div>
+
+            <!-- Member 3 -->
+            <div style="flex:1 1 calc(25% - 20px); max-width:250px; text-align:center;">
+                <div style="position:relative; overflow:hidden; border-radius:10px; width:250px; height:250px;">
+                    <img src="person_7.jpg.webp" style="width:100%; height:100%; object-fit:cover; transition:0.3s;">
+                    <div style="position:absolute; left:0; top:0; height:100%; background:rgba(255,102,0,0.85); display:flex; flex-direction:column; justify-content:center; align-items:center; width:50px; transform:translateX(-100%); transition:0.3s;">
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <h5 style="margin-top:15px; font-weight:bold;">Ben Thompson</h5>
+                <p style="font-size:14px; color:gray;">Accountant</p>
+            </div>
+
+            <!-- Member 4 -->
+            <div style="flex:1 1 calc(25% - 20px); max-width:250px; text-align:center;">
+                <div style="position:relative; overflow:hidden; border-radius:10px; width:250px; height:250px;">
+                    <img src="person_8.jpg.webp" style="width:100%; height:100%; object-fit:cover; transition:0.3s;">
+                    <div style="position:absolute; left:0; top:0; height:100%; background:rgba(255,102,0,0.85); display:flex; flex-direction:column; justify-content:center; align-items:center; width:50px; transform:translateX(-100%); transition:0.3s;">
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <h5 style="margin-top:15px; font-weight:bold;">Kyla Stewart</h5>
+                <p style="font-size:14px; color:gray;">Accountant</p>
+            </div>
+
+            <!-- Member 5 -->
+            <div style="flex:1 1 calc(25% - 20px); max-width:250px; text-align:center;">
+                <div style="position:relative; overflow:hidden; border-radius:10px; width:250px; height:250px;">
+                    <img src="person_1.jpg.webp" style="width:100%; height:100%; object-fit:cover; transition:0.3s;">
+                    <div style="position:absolute; left:0; top:0; height:100%; background:rgba(255,102,0,0.85); display:flex; flex-direction:column; justify-content:center; align-items:center; width:50px; transform:translateX(-100%); transition:0.3s;">
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <h5 style="margin-top:15px; font-weight:bold;">Kaiara Spencer</h5>
+                <p style="font-size:14px; color:gray;">Finance Manager</p>
+            </div>
+
+            <!-- Member 6 -->
+            <div style="flex:1 1 calc(25% - 20px); max-width:250px; text-align:center;">
+                <div style="position:relative; overflow:hidden; border-radius:10px; width:250px; height:250px;">
+                    <img src="person_2.jpg.webp" style="width:100%; height:100%; object-fit:cover; transition:0.3s;">
+                    <div style="position:absolute; left:0; top:0; height:100%; background:rgba(255,102,0,0.85); display:flex; flex-direction:column; justify-content:center; align-items:center; width:50px; transform:translateX(-100%); transition:0.3s;">
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <h5 style="margin-top:15px; font-weight:bold;">Dave Simpson</h5>
+                <p style="font-size:14px; color:gray;">Marketing Manager</p>
+            </div>
+
+            <!-- Member 7 -->
+            <div style="flex:1 1 calc(25% - 20px); max-width:250px; text-align:center;">
+                <div style="position:relative; overflow:hidden; border-radius:10px; width:250px; height:250px;">
+                    <img src="person_3.jpg" style="width:100%; height:100%; object-fit:cover; transition:0.3s;">
+                    <div style="position:absolute; left:0; top:0; height:100%; background:rgba(255,102,0,0.85); display:flex; flex-direction:column; justify-content:center; align-items:center; width:50px; transform:translateX(-100%); transition:0.3s;">
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <h5 style="margin-top:15px; font-weight:bold;">Ben Thompson</h5>
+                <p style="font-size:14px; color:gray;">Accountant</p>
+            </div>
+
+            <!-- Member 8 -->
+            <div style="flex:1 1 calc(25% - 20px); max-width:250px; text-align:center;">
+                <div style="position:relative; overflow:hidden; border-radius:10px; width:250px; height:250px;">
+                    <img src="person_4.jpg.webp" style="width:100%; height:100%; object-fit:cover; transition:0.3s;">
+                    <div style="position:absolute; left:0; top:0; height:100%; background:rgba(255,102,0,0.85); display:flex; flex-direction:column; justify-content:center; align-items:center; width:50px; transform:translateX(-100%); transition:0.3s;">
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" style="color:white; margin:10px 0; font-size:18px;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <h5 style="margin-top:15px; font-weight:bold;">Kyla Stewart</h5>
+                <p style="font-size:14px; color:gray;">Accountant</p>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('section div[style*="position:relative"]').forEach(function(card){
+          card.addEventListener('mouseenter', function(){
+            this.querySelector('div[style*="background"]').style.transform = 'translateX(0)';
+            this.querySelector('img').style.transform = 'scale(1.1)';
+          });
+          card.addEventListener('mouseleave', function(){
+            this.querySelector('div[style*="background"]').style.transform = 'translateX(-100%)';
+            this.querySelector('img').style.transform = 'scale(1)';
+          });
+        });
+    </script>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+                                                <!-- Gallery Section -->
+    <section id="gallery" class="site-section aos-init aos-animate" data-aos="fade">
+        <div class="container">
+
+            <!-- Title -->
+            <div class="row mb-3">
+                <div class="col-12 text-center">
+                    <h2 class="section-title mb-3" style="color:#ff6600; font-weight:800;">Gallery</h2>
+                </div>
+            </div>
+
+
+            <!-- Filter Buttons -->
+            <div class="row justify-content-center mb-5">
+                <div id="filters" class="filters text-center button-group col-md-7">
+                    <button class="btn btn-primary active" data-filter="*">All</button>
+                    <button class="btn btn-primary" data-filter=".web">Events</button>
+                    <button class="btn btn-primary" data-filter=".design">Party</button>
+                    <button class="btn btn-primary" data-filter=".brand">Holidays</button>
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div id="posts" class="row">
+                <!-- Row 1 -->
+                <div class="item web col-sm-6 col-md-3 mb-4">
+                    <a href="img_1.jpg.webp" class="item-wrap fancybox" data-fancybox="gallery2">
+                        <span class="icon-search2"></span>
+                        <img class="img-fluid" src="img_1.jpg.webp" alt="">
+                    </a>
+                </div>
+                <div class="item web col-sm-6 col-md-3 mb-4">
+                    <a href="img_2.jpg.webp" class="item-wrap fancybox" data-fancybox="gallery2">
+                        <span class="icon-search2"></span>
+                        <img class="img-fluid" src="img_2.jpg.webp" alt="">
+                    </a>
+                </div>
+                <div class="item brand col-sm-6 col-md-3 mb-4">
+                    <a href="img_3.jpg.webp" class="item-wrap fancybox" data-fancybox="gallery2">
+                        <span class="icon-search2"></span>
+                        <img class="img-fluid" src="img_3.jpg.webp" alt="">
+                    </a>
+                </div>
+                <div class="item design col-sm-6 col-md-3 mb-4">
+                    <a href="img_4.jpg.webp" class="item-wrap fancybox" data-fancybox="gallery2">
+                        <span class="icon-search2"></span>
+                        <img class="img-fluid" src="img_4.jpg.webp" alt="">
+                    </a>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="item web col-sm-6 col-md-3 mb-4">
+                    <a href="img_5.jpg.webp" class="item-wrap fancybox" data-fancybox="gallery2">
+                        <span class="icon-search2"></span>
+                        <img class="img-fluid" src="img_5.jpg.webp" alt="">
+                    </a>
+                </div>
+                <div class="item brand col-sm-6 col-md-3 mb-4">
+                    <a href="img_1.jpg.webp" class="item-wrap fancybox" data-fancybox="gallery2">
+                        <span class="icon-search2"></span>
+                        <img class="img-fluid" src="img_1.jpg.webp" alt="">
+                    </a>
+                </div>
+                <div class="item design col-sm-6 col-md-3 mb-4">
+                    <a href="img_2.jpg.webp" class="item-wrap fancybox" data-fancybox="gallery2">
+                        <span class="icon-search2"></span>
+                        <img class="img-fluid" src="img_2.jpg.webp" alt="">
+                    </a>
+                </div>
+                <div class="item web col-sm-6 col-md-3 mb-4">
+                    <a href="img_3.jpg.webp" class="item-wrap fancybox" data-fancybox="gallery2">
+                        <span class="icon-search2"></span>
+                        <img class="img-fluid" src="img_3.jpg.webp" alt="">
+                    </a>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="item design col-sm-6 col-md-3 mb-4">
+                    <a href="img_4.jpg.webp" class="item-wrap fancybox" data-fancybox="gallery2">
+                        <span class="icon-search2"></span>
+                        <img class="img-fluid" src="img_4.jpg.webp" alt="">
+                    </a>
+                </div>
+                <div class="item brand col-sm-6 col-md-3 mb-4">
+                    <a href="img_5.jpg.webp" class="item-wrap fancybox" data-fancybox="gallery2">
+                        <span class="icon-search2"></span>
+                        <img class="img-fluid" src="img_5.jpg.webp" alt="">
+                    </a>
+                </div>
+                <div class="item web col-sm-6 col-md-3 mb-4">
+                    <a href="img_1.jpg.webp" class="item-wrap fancybox" data-fancybox="gallery2">
+                        <span class="icon-search2"></span>
+                        <img class="img-fluid" src="img_1.jpg.webp" alt="">
+                    </a>
+                </div>
+                <div class="item design col-sm-6 col-md-3 mb-4">
+                    <a href="img_2.jpg.webp" class="item-wrap fancybox" data-fancybox="gallery2">
+                        <span class="icon-search2"></span>
+                        <img class="img-fluid" src="img_2.jpg.webp" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Isotope JS -->
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+    <!-- Isotope Filter -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var iso = new Isotope('#posts', {
+                itemSelector: '.item',
+                layoutMode: 'fitRows'
+            });
+
+            var filtersElem = document.querySelector('#filters');
+            filtersElem.addEventListener('click', function(event) {
+                if (!event.target.matches('button')) {
+                    return;
+                }
+                var filterValue = event.target.getAttribute('data-filter');
+                iso.arrange({ filter: filterValue });
+
+                filtersElem.querySelector('.active').classList.remove('active');
+                event.target.classList.add('active');
+            });
+        });
+    </script>
+
+    
+                                                <!-- How It Works Section -->
+    <section style="padding:48px 20px 80px; min-height:320px; box-sizing:border-box; text-align:center;">
+        <div style="max-width:1200px;margin:auto;">
+
+            <!-- Heading -->
+            <div style="text-align:center;margin-bottom:40px;">
+                <h2 style="font-size:30px;font-weight:900;
+                       background:linear-gradient(90deg,#ff6600,#ff9900);
+                       -webkit-background-clip:text;
+                       -webkit-text-fill-color:transparent;
+                       text-transform:uppercase;
+                       letter-spacing:2px;
+                       margin-bottom:10px;
+                       text-shadow:2px 2px 4px rgba(0,0,0,0.1);">
+                    How It Works
+                </h2>
+                <p style="font-size:18px;color:#555;max-width:700px;margin:auto;">
+                    Follow these simple steps to get started with our banking services.
+                </p>
+            </div>
+
+            <!-- Slider Row -->
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px;position:relative;">
+
+                <!-- Image -->
+                <div style="flex:1 1 350px;text-align:center;">
+                    <img id="howItWorksImage" src="slide_1.jpg.webp"
+                         alt="Bank Step"
+                         style="width:100%;max-width:400px;border-radius:20px;
+                            box-shadow:0 8px 20px rgba(0,0,0,0.15);">
+                </div>
+
+                <!-- Arrow Buttons -->
+                <div style="flex:0 0 auto;display:flex;gap:10px;">
+                    <a href="#" id="prevBtn"m
+                       style="display:inline-block;background:#ff6600;color:#fff;
+                          padding:10px 15px;border-radius:50%;
+                          font-size:20px;text-decoration:none;
+                          box-shadow:0 4px 8px rgba(0,0,0,0.2);
+                          transition:0.3s;">
+                        &#8592;
+                    </a>
+                    <a href="#" id="nextBtn"
+                       style="display:inline-block;background:#ff6600;color:#fff;
+                          padding:10px 15px;border-radius:50%;
+                          font-size:20px;text-decoration:none;
+                          box-shadow:0 4px 8px rgba(0,0,0,0.2);
+                          transition:0.3s;">
+                        &#8594;
+                    </a>
+                </div>
+
+                <!-- Text -->
+                <div style="flex:1 1 350px;">
+                    <h2 id="howItWorksTitle"
+                        style="font-size:26px;font-weight:700;color:#ff6600;margin-bottom:15px;">
+                        01. Online Application
+                    </h2>
+                    <p id="howItWorksText" style="font-size:16px;color:#444;margin-bottom:20px;">
+                        A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
+                    </p>
+                    <a href="#" style="display:inline-block;background:#ff6600;color:#fff;
+                                   padding:12px 25px;border-radius:30px;
+                                   font-size:16px;text-decoration:none;
+                                   box-shadow:0 4px 10px rgba(0,0,0,0.15);
+                                   transition:0.3s;">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const steps = [
+          {
+            title: "01. Online Application",
+            text: "A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.",
+            img: "slide_1.jpg.webp"
+          },
+          {
+            title: "02. Get an Approval",
+            text: "A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.",
+            img: "slide_2.jpg.webp"
+          },
+          {
+            title: "03. Card Delivery",
+            text: "A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.",
+            img: "slide_3.jpg.webp"
+          }
+        ];
+
+        let currentStep = 0;
+        const imgEl = document.getElementById('howItWorksImage');
+        const titleEl = document.getElementById('howItWorksTitle');
+        const textEl = document.getElementById('howItWorksText');
+
+        function updateContent() {
+          imgEl.src = steps[currentStep].img;
+          titleEl.textContent = steps[currentStep].title;
+          textEl.textContent = steps[currentStep].text;
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', (e) => {
+          e.preventDefault();
+          currentStep = (currentStep + 1) % steps.length;
+          updateContent();
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', (e) => {
+          e.preventDefault();
+          currentStep = (currentStep - 1 + steps.length) % steps.length;
+          updateContent();
+        });
+    </script>
+
+
+                                                 <!-- Services Section -->
+    <section id="services" class="services-section" style="padding: 50px 0; font-family: Arial, sans-serif;">
+        <div class="container">
+            <h2 class="text-center" style="color: orange; font-weight: bold; margin-bottom: 40px;">Our Services</h2>
+            <div class="row text-left">
+
+                <!-- Business Consulting -->
+                <div class="col-md-4 mb-4">
+                    <img src="001-wallet.svg" alt="Business Consulting" style="width:60px; height:60px;">
+                    <h4 style="margin-top: 15px;">Business Consulting</h4>
+                    <p style="color: #666; font-size: 14px;">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                    <a href="#" style="color: orange; text-decoration: none;">Learn More</a>
+                </div>
+
+                <!-- Credit Card -->
+                <div class="col-md-4 mb-4">
+                    <img src="006-credit-card.svg" alt="Credit Card" style="width:60px; height:60px;">
+                    <h4 style="margin-top: 15px;">Credit Card</h4>
+                    <p style="color: #666; font-size: 14px;">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                    <a href="#" style="color: orange; text-decoration: none;">Learn More</a>
+                </div>
+
+                <!-- Income Monitoring -->
+                <div class="col-md-4 mb-4">
+                    <img src="003-notes.svg" alt="Income Monitoring" style="width:60px; height:60px;">
+                    <h4 style="margin-top: 15px;">Income Monitoring</h4>
+                    <p style="color: #666; font-size: 14px;">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                    <a href="#" style="color: orange; text-decoration: none;">Learn More</a>
+                </div>
+
+                <!-- Insurance Consulting -->
+                <div class="col-md-4 mb-4">
+                    <img src="002-rich.svg" alt="Insurance Consulting" style="width:60px; height:60px;">
+                    <h4 style="margin-top: 15px;">Insurance Consulting</h4>
+                    <p style="color: #666; font-size: 14px;">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                    <a href="#" style="color: orange; text-decoration: none;">Learn More</a>
+                </div>
+
+                <!-- Financial Investment -->
+                <div class="col-md-4 mb-4">
+                    <img src="004-cart.svg" alt="Financial Investment" style="width:60px; height:60px;">
+                    <h4 style="margin-top: 15px;">Financial Investment</h4>
+                    <p style="color: #666; font-size: 14px;">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                    <a href="#" style="color: orange; text-decoration: none;">Learn More</a>
+                </div>
+
+                <!-- Financial Management -->
+                <div class="col-md-4 mb-4">
+                    <img src="005-megaphone.svg" alt="Financial Management" style="width:60px; height:60px;">
+                    <h4 style="margin-top: 15px;">Financial Management</h4>
+                    <p style="color: #666; font-size: 14px;">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                    <a href="#" style="color: orange; text-decoration: none;">Learn More</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+                                                 <!-- Happy Customer -->
+    <section id="testimonials" aria-label="Happy Customers" style="padding:48px 20px 80px; min-height:320px; box-sizing:border-box; text-align:center;">
+
+        <!-- Heading -->
+        <h2 style="color:#ff6600; font-size:32px; margin:0 0 24px; font-weight:700;">
+            Happy Customers
+        </h2>
+
+        <!-- Slider -->
+        <div id="testimonialSlider" style="max-width:860px; margin:0 auto; overflow:hidden; position:relative;">
+
+            <!-- Slides wrapper -->
+            <div class="slides" style="display:flex; transition:transform 0.6s ease;">
+
+                <!-- Clone last slide for infinite loop -->
+                <div style="flex:0 0 100%; padding:6px 28px 36px; box-sizing:border-box;">
+                    <p style="color:#9b9b9b; font-style:italic; font-size:18px; line-height:1.8; max-width:720px; margin:0 auto 22px;">
+                        “The Big Oxmox advised her not to do so, because there were thousands of bad Commas...”
+                    </p>
+                    <div style="display:flex; align-items:center; justify-content:center; gap:12px;">
+                        <div style="width:38px; height:38px; border-radius:50%; overflow:hidden;">
+                            <img src="person_4.jpg.webp" style="width:100%; height:100%;">
+                        </div>
+                        <div style="color:#777; font-size:14px;">Bruce Rogers</div>
+                    </div>
+                </div>
+
+                <!-- Slide 0 -->
+                <div style="flex:0 0 100%; padding:6px 28px 36px; box-sizing:border-box;">
+                    <p style="color:#9b9b9b; font-style:italic; font-size:18px; line-height:1.8; max-width:720px; margin:0 auto 22px;">
+                        ““Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.””
+                    </p>
+                    <div style="display:flex; align-items:center; justify-content:center; gap:12px;">
+                        <div style="width:38px; height:38px; border-radius:50%; overflow:hidden;">
+                            <img src="person_3.jpg" style="width:100%; height:100%;">
+                        </div>
+                        <div style="color:#777; font-size:14px;">John Smith</div>
+                    </div>
+                </div>
+
+                <!-- Slide 1 -->
+                <div style="flex:0 0 100%; padding:6px 28px 36px; box-sizing:border-box;">
+                    <p style="color:#9b9b9b; font-style:italic; font-size:18px; line-height:1.8; max-width:720px; margin:0 auto 22px;">
+                        ““A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.””
+                    </p>
+                    <div style="display:flex; align-items:center; justify-content:center; gap:12px;">
+                        <div style="width:38px; height:38px; border-radius:50%; overflow:hidden;">
+                            <img src="person_2.jpg.webp" style="width:100%; height:100%;">
+                        </div>
+                        <div style="color:#777; font-size:14px;">Christine Aguilar</div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div style="flex:0 0 100%; padding:6px 28px 36px; box-sizing:border-box;">
+                    <p style="color:#9b9b9b; font-style:italic; font-size:18px; line-height:1.8; max-width:720px; margin:0 auto 22px;">
+                        ““Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.””
+                    </p>
+                    <div style="display:flex; align-items:center; justify-content:center; gap:12px;">
+                        <div style="width:38px; height:38px; border-radius:50%; overflow:hidden;">
+                            <img src="person_4.jpg.webp" style="width:100%; height:100%;">
+                        </div>
+                        <div style="color:#777; font-size:14px;">Robert Spears</div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div style="flex:0 0 100%; padding:6px 28px 36px; box-sizing:border-box;">
+                    <p style="color:#9b9b9b; font-style:italic; font-size:18px; line-height:1.8; max-width:720px; margin:0 auto 22px;">
+                        ““The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.””
+                    </p>
+                    <div style="display:flex; align-items:center; justify-content:center; gap:12px;">
+                        <div style="width:38px; height:38px; border-radius:50%; overflow:hidden;">
+                            <img src="person_4.jpg.webp" style="width:100%; height:100%;">
+                        </div>
+                        <div style="color:#777; font-size:14px;">Bruce Rogers</div>
+                    </div>
+                </div>
+
+                <!-- Clone first slide for infinite loop -->
+                <div style="flex:0 0 100%; padding:6px 28px 36px; box-sizing:border-box;">
+                    <p style="color:#9b9b9b; font-style:italic; font-size:18px; line-height:1.8; max-width:720px; margin:0 auto 22px;">
+                        “Far far away, behind the word mountains, far from the countries Vokalia and Consonantia...”
+                    </p>
+                    <div style="display:flex; align-items:center; justify-content:center; gap:12px;">
+                        <div style="width:38px; height:38px; border-radius:50%; overflow:hidden;">
+                            <img src="person_3.jpg" style="width:100%; height:100%;">
+                        </div>
+                        <div style="color:#777; font-size:14px;">John Smith</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Dots -->
+            <div id="sliderDots" style="display:flex; gap:10px; justify-content:center; margin-top:22px;">
+                <div class="dot" data-idx="0" style="width:9px; height:9px; border-radius:50%; background:#ff6600; transform:scale(1.25); box-shadow:0 0 0 6px rgba(255,102,0,0.06); cursor:pointer;"></div>
+                <div class="dot" data-idx="1" style="width:9px; height:9px; border-radius:50%; background:#d6d6d6; cursor:pointer;"></div>
+                <div class="dot" data-idx="2" style="width:9px; height:9px; border-radius:50%; background:#d6d6d6; cursor:pointer;"></div>
+                <div class="dot" data-idx="3" style="width:9px; height:9px; border-radius:50%; background:#d6d6d6; cursor:pointer;"></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function(){
+            const slidesWrapper = document.querySelector('.slides');
+            const dots = document.querySelectorAll('.dot');
+            const totalRealSlides = dots.length;
+            let current = 1; // first real slide
+            let autoSlideTimer;
+
+            function updateDots(index){
+                dots.forEach((dot,i)=>{
+                    if(i===index){
+                        dot.style.background = '#ff6600';
+                        dot.style.transform = 'scale(1.25)';
+                        dot.style.boxShadow = '0 0 0 6px rgba(255,102,0,0.06)';
+                    } else {
+                        dot.style.background = '#d6d6d6';
+                        dot.style.transform = 'scale(1)';
+                        dot.style.boxShadow = 'none';
+                    }
+                });
+            }
+
+            function goToSlide(index, smooth = true){
+                slidesWrapper.style.transition = smooth ? 'transform 0.6s ease' : 'none';
+                slidesWrapper.style.transform = `translateX(-${index * 100}%)`;
+            }
+
+            function nextSlide(){
+                current++;
+                goToSlide(current);
+            }
+
+            slidesWrapper.addEventListener('transitionend', ()=>{
+                if(current === 0){
+                    current = totalRealSlides;
+                    goToSlide(current, false);
+                }
+                if(current === totalRealSlides + 1){
+                    current = 1;
+                    goToSlide(current, false);
+                }
+                updateDots(current - 1);
+            });
+
+            dots.forEach(dot=>{
+                dot.addEventListener('click', ()=>{
+                    current = parseInt(dot.dataset.idx) + 1;
+                    goToSlide(current);
+                    restartAutoSlide();
+                });
+            });
+
+            function startAutoSlide(){
+                stopAutoSlide();
+                autoSlideTimer = setInterval(nextSlide, 5000);
+            }
+
+            function stopAutoSlide(){
+                clearInterval(autoSlideTimer);
+            }
+
+            function restartAutoSlide(){
+                startAutoSlide();
+            }
+
+            // Init
+            goToSlide(current, false);
+            updateDots(current - 1);
+            startAutoSlide();
+        })();
+    </script>
+
+
+
+
+                                                 <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section container py-5" style="padding: 3rem 1rem;">
+        <div class="section-title text-center mb-5" style="text-align: center; margin-bottom: 3rem;">
+            <h2 style="font-weight: 700; color: #ff6600;">Pricing</h2>
+        </div>
+        <div class="row" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+
+            <!-- Basic Plan -->
+            <div class="col-md-4 mb-4" style="flex: 1 1 300px; max-width: 350px;">
+                <div style="background: #fff; border-radius: 15px; border: 1px solid #eee; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; text-align: center; padding: 2rem;">
+                    <h4 style="font-size: 1.4rem; font-weight: 600; margin-bottom: 15px;">Basic</h4>
+                    <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px;">$47 <span style="font-size: 1rem; color: #777;">/ year</span></h2>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 1.5rem; color: black;">
+                        <li>Officia quaerat eaque neque</li>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Consectetur adipisicing elit</li>
+                    </ul>
+                    <a href="#buy-basic" style="display: inline-block; padding: 10px 25px; border-radius: 50px; border: none; text-decoration: none; background: #ff6600; color: white; font-weight: 600; transition: background 0.3s ease, transform 0.3s ease;">Buy Now</a>
+                </div>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="col-md-4 mb-4" style="flex: 1 1 300px; max-width: 350px;">
+                <div style="background: linear-gradient(135deg, #ff6600, #ff944d); color: white; transform: scale(1.05); border-radius: 15px; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(255,102,0,0.3); text-align: center; padding: 2rem;">
+                    <h4 style="font-size: 1.4rem; font-weight: 600; margin-bottom: 15px; color: white;">Premium</h4>
+                    <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: white;">$200 <span style="font-size: 1rem; color: rgba(255,255,255,0.8);">/ year</span></h2>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 1.5rem; color: white;">
+                        <li>Possimus aut consequuntur</li>
+                        <li>Dolorum esse odio quas</li>
+                        <li>Architecto sint</li>
+                    </ul>
+                    <a href="#buy-premium" style="display: inline-block; padding: 10px 25px; border-radius: 50px; border: none; text-decoration: none; background: white; color: #ff6600; font-weight: 600; transition: background 0.3s ease, transform 0.3s ease;">Buy Now</a>
+                </div>
+            </div>
+
+            <!-- Professional Plan -->
+            <div class="col-md-4 mb-4" style="flex: 1 1 300px; max-width: 350px;">
+                <div style="background: #fff; border-radius: 15px; border: 1px solid #eee; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; text-align: center; padding: 2rem;">
+                    <h4 style="font-size: 1.4rem; font-weight: 600; margin-bottom: 15px;">Professional</h4>
+                    <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px;">$750 <span style="font-size: 1rem; color: #777;">/ year</span></h2>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 1.5rem; color: black;">
+                        <li>Premium support</li>
+                        <li>Custom integrations</li>
+                        <li>Advanced reporting</li>
+                    </ul>
+                    <a href="#buy-professional" style="display: inline-block; padding: 10px 25px; border-radius: 50px; border: none; text-decoration: none; background: #ff6600; color: white; font-weight: 600; transition: background 0.3s ease, transform 0.3s ease;">Buy Now</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+                                                  <!-- FAQ Section -->
+    <!-- FAQ Section -->
+    <section id="faq" style="padding: 50px 0; max-width: 1200px; margin: auto; font-family: Arial, sans-serif;">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="color: #ff6600; font-weight: 700;">Frequently Asked Questions</h2>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+
+            <!-- Left Column -->
+            <div style="flex: 1; min-width: 280px;">
+                <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+                    <h5 style="font-weight: 600; color: #333;">
+                        <i class="fas fa-question-circle" style="color:#ff6600; margin-right: 8px;"></i>
+                        Can I accept both Paypal and Stripe?
+                    </h5>
+                    <p style="color: #666; font-size: 14px;">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia...</p>
+                </div>
+
+                <div style="background: #fff; padding: 20px; margin-top: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+                    <h5 style="font-weight: 600; color: #333;">
+                        <i class="fas fa-question-circle" style="color:#ff6600; margin-right: 8px;"></i>
+                        What available is refund period?
+                    </h5>
+                    <p style="color: #666; font-size: 14px;">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia...</p>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div style="flex: 1; min-width: 280px;">
+                <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+                    <h5 style="font-weight: 600; color: #333;">
+                        <i class="fas fa-question-circle" style="color:#ff6600; margin-right: 8px;"></i>
+                        Where are you from?
+                    </h5>
+                    <p style="color: #666; font-size: 14px;">Voluptatum nobis obcaecati perferendis dolor totam unde dolores quod maxime corporis officia et...</p>
+                </div>
+
+                <div style="background: #fff; padding: 20px; margin-top: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+                    <h5 style="font-weight: 600; color: #333;">
+                        <i class="fas fa-question-circle" style="color:#ff6600; margin-right: 8px;"></i>
+                        What is your opening time?
+                    </h5>
+                    <p style="color: #666; font-size: 14px;">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about-section" style="padding: 50px 0; max-width: 1200px; margin: auto; font-family: Arial, sans-serif;">
+        <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+
+            <!-- Image -->
+            <div style="flex: 1; min-width: 300px;">
+                <img src="hero_1.jpg.webp" alt="Bank Services" style="width: 100%; border-radius: 10px;">
+            </div>
+
+            <!-- Text -->
+            <div style="flex: 1; min-width: 300px;">
+
+                <!-- Bank Loan -->
+                <div style="display: flex; margin-bottom: 30px;">
+                    <div style="margin-right: 15px; font-size: 20px; color: #ff6600;">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div>
+                        <h3 style="margin: 0 0 10px; font-weight: initial;">Bank Loan</h3>
+                        <p style="margin: 0 0 10px; color: #555;">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia...</p>
+                        <a href="#" style="color: #ff6600; text-decoration: none; font-weight: 600;">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Banking Consultation -->
+                <div style="display: flex;">
+                    <div style="margin-right: 15px; font-size: 20px; color: #ff6600;">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div>
+                        <h3 style="margin: 0 0 10px; font-weight: initial;">Banking Consultation</h3>
+                        <p style="margin: 0 0 10px; color: #555;">Separated they live in Bookmarksgrove right at the coast of the Semantics...</p>
+                        <a href="#" style="color: #ff6600; text-decoration: none; font-weight: 600;">Learn More</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+                                                    <!-- Blog Section -->
+    <section id="blog" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5" style="color: #ff6600;">Our Blog</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <img src="img_1.jpg.webp"
+                         alt="Business Payment"
+                         class="img-fluid rounded mb-3" style="height: 250px; object-fit: cover; width: 100%;">
+                    <h5>A Basic Guide to Starting a Franchise in the Philippines</h5>
+                    <p><small>James Phelps • Jan 18, 2019 • <span style="color: #ff6600;">News</span></small></p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <img src="img_4.jpg.webp"
+                         alt="Business Payment"
+                         class="img-fluid rounded mb-3" style="height: 250px; object-fit: cover; width: 100%;">
+                    <h5>A Basic Guide to Starting a Franchise in the Philippines</h5>
+                    <p><small>James Phelps • Jan 18, 2019 • <span style="color: #ff6600;">News</span></small></p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <img src="img_3.jpg.webp"
+                         alt="Financial Planning"
+                         class="img-fluid rounded mb-3" style="height: 250px; object-fit: cover; width: 100%;">
+                    <h5>A Basic Guide to Starting a Franchise in the Philippines</h5>
+                    <p><small>James Phelps • Jan 18, 2019 • <span style="color: #ff6600;">News</span></small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+                                                     <!-- Contact -->
+    <section id="contact" class="contact py-5 bg-light">
+    <div class="container">
+        <h2 class="mb-4 text-center">Contact Us</h2>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <form>
+                    <div class="form-row">
+                        <div class="col"><input class="form-control" placeholder="First Name" /></div>
+                        <div class="col"><input class="form-control" placeholder="Last Name" /></div>
+                    </div>
+                    <input class="form-control mt-3" placeholder="Email" />
+                    <input class="form-control mt-3" placeholder="Subject" />
+                    <textarea class="form-control mt-3" rows="4" placeholder="Message"></textarea>
+                    <button class="btn btn-primary mt-3">Send Message</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Location:</strong> 203 Fake St. Mountain View, San Francisco, California, USA</p>
+                <p><strong>Phone:</strong> +1 232 3235 324</p>
+                <p><strong>Email:</strong> info@example.com</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+                                                      <!-- Footer -->
+    <footer style="background-color:#2d3339;color:#fff;padding:50px 20px;font-family:Arial,sans-serif;">
+        <div style="max-width:1200px;margin:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;">
+
+            <!-- About Us -->
+            <div style="flex:1 1 250px;min-width:220px;">
+                <h3 style="margin-bottom:15px;font-size:16px;">About Us</h3>
+                <p style="color:#cbd0d5;font-size:14px;line-height:1.6;">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam voluptatum autem. Amet aliquid nesciunt veritatis aliquam.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div style="flex:1 1 200px;min-width:180px;">
+                <h3 style="margin-bottom:15px;font-size:16px;">Quick Links</h3>
+                <ul style="list-style:none;padding:0;margin:0;line-height:2;">
+                    <li><a href="#" style="color:#cbd0d5;text-decoration:none;">Terms</a></li>
+                    <li><a href="#" style="color:#cbd0d5;text-decoration:none;">Policy</a></li>
+                    <li><a href="#" style="color:#cbd0d5;text-decoration:none;">About Us</a></li>
+                    <li><a href="#" style="color:#cbd0d5;text-decoration:none;">Services</a></li>
+                    <li><a href="#" style="color:#cbd0d5;text-decoration:none;">Testimonials</a></li>
+                    <li><a href="#" style="color:#cbd0d5;text-decoration:none;">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Follow Us -->
+            <div style="flex:1 1 150px;min-width:150px;">
+                <h3 style="margin-bottom:15px;font-size:16px;">Follow Us</h3>
+                <div style="margin-top:5px;">
+                    <a href="#" style="color:#007bff;margin:0 10px;font-size:1.2rem;text-decoration:none;transition:color 0.3s ease;"
+                       onmouseover="this.style.color='#0056b3';" onmouseout="this.style.color='#007bff';">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" style="color:#007bff;margin:0 10px;font-size:1.2rem;text-decoration:none;transition:color 0.3s ease;"
+                       onmouseover="this.style.color='#0056b3';" onmouseout="this.style.color='#007bff';">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" style="color:#007bff;margin:0 10px;font-size:1.2rem;text-decoration:none;transition:color 0.3s ease;"
+                       onmouseover="this.style.color='#0056b3';" onmouseout="this.style.color='#007bff';">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" style="color:#007bff;margin:0 10px;font-size:1.2rem;text-decoration:none;transition:color 0.3s ease;"
+                       onmouseover="this.style.color='#0056b3';" onmouseout="this.style.color='#007bff';">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div style="flex:1 1 250px;min-width:220px;">
+                <h3 style="margin-bottom:15px;font-size:16px;">Subscribe Newsletter</h3>
+                <form style="display:flex;flex-wrap:wrap;">
+                    <input type="email" placeholder="Enter Email"
+                           style="padding:10px;border:1px solid #999;border-radius:20px 0 0 20px;background:transparent;color:white;outline:none;flex:1;min-width:140px;">
+                    <button type="submit"
+                            style="padding:10px 20px;border:none;border-radius:0 20px 20px 0;background:white;color:black;cursor:pointer;">
+                        Send
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Bottom -->
+        <div style="border-top:1px solid rgba(255,255,255,0.1);margin-top:40px;padding-top:20px;text-align:center;color:#cbd0d5;font-size:13px;">
+            Copyright ©2025 All rights reserved | This template is made with ❤️ by
+            <a href="https://colorlib.com" style="color:#cbd0d5;text-decoration:none;">Colorlib</a>
+        </div>
+    </footer>
+
+<!-- JS (Optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
